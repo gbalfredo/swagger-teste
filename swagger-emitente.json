@@ -1,0 +1,95 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Servi\u00e7o de Emitentes",
+    "description": "API REST para consulta do primeiro e \u00faltimo emitente com identificador 2 ou 3."
+  },
+  "host": "fsw.consultoriaprime.com",
+  "basePath": "/api/prm/v1/prmapiAtivaFornec",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/getFirst": {
+      "get": {
+        "tags": [
+          "Emitente"
+        ],
+        "summary": "Retorna o primeiro emitente cadastrado",
+        "description": "Retorna o primeiro emitente com identificador 2 ou 3",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisi\u00e7\u00e3o executada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/LookupEmitenteResponse"
+            }
+          },
+          "500": {
+            "description": "Erro interno"
+          }
+        }
+      }
+    },
+    "/getLast": {
+      "get": {
+        "tags": [
+          "Emitente"
+        ],
+        "summary": "Retorna o \u00faltimo emitente cadastrado",
+        "description": "Retorna o \u00faltimo emitente com identificador 2 ou 3",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisi\u00e7\u00e3o executada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/LookupEmitenteResponse"
+            }
+          },
+          "500": {
+            "description": "Erro interno"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LookupEmitenteResponse": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "example": "GET"
+        },
+        "status": {
+          "type": "integer",
+          "example": 200
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LookupEmitente"
+          }
+        }
+      }
+    },
+    "LookupEmitente": {
+      "type": "object",
+      "properties": {
+        "codEmitente": {
+          "type": "string",
+          "example": "000001"
+        },
+        "desEmitente": {
+          "type": "string",
+          "example": "EMPRESA MODELO LTDA"
+        }
+      }
+    }
+  }
+}
