@@ -2,53 +2,63 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Serviço de Emitentes",
-    "description": "API REST desenvolvida em Progress 4GL para retornar o primeiro e o último emitente com identificador 2 ou 3."
+    "title": "Serviço Emitentes",
+    "description": "API REST para consulta do primeiro e ultimo emitente com identificador 2 ou 3."
   },
   "host": "fsw.consultoriaprime.com",
-  "basePath": "/api/prm/v1/prmapiAtivaFornec",
-  "schemes": ["http"],
-  "produces": ["application/json"],
+  "basePath": "/api/prm/v1",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
   "paths": {
-    "/getFirst": {
+    "/prmapiAtivaFornec/getFirst": {
       "get": {
-        "tags": ["Emitente"],
-        "summary": "Retorna o primeiro emitente com identificador 2 ou 3",
-        "description": "Executa a procedure pi-get-first e retorna os dados do primeiro emitente encontrado na tabela mgcad.emitente.",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Requisição executada com sucesso",
+            "description": "Requisicao executada com sucesso",
             "schema": {
-              "$ref": "#/definitions/LookupEmitenteResponse"
+              "$ref": "#/definitions/return"
             }
           },
-          "500": {
-            "description": "Erro interno ao executar a procedure"
+          "400": {
+            "description": "Erro interno"
           }
         }
       }
     },
-    "/getLast": {
+    "/prmapiAtivaFornec/getLast": {
       "get": {
-        "tags": ["Emitente"],
-        "summary": "Retorna o último emitente com identificador 2 ou 3",
-        "description": "Executa a procedure pi-get-last e retorna os dados do último emitente encontrado na tabela mgcad.emitente.",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Requisição executada com sucesso",
+            "description": "Requisicao executada com sucesso",
             "schema": {
-              "$ref": "#/definitions/LookupEmitenteResponse"
+              "$ref": "#/definitions/return"
             }
           },
-          "500": {
-            "description": "Erro interno ao executar a procedure"
+          "400": {
+            "description": "Erro interno"
           }
         }
       }
     }
   },
   "definitions": {
-    "LookupEmitenteResponse": {
+    "return": {
       "type": "object",
       "properties": {
         "method": {
@@ -72,13 +82,11 @@
       "properties": {
         "codEmitente": {
           "type": "string",
-          "example": "000001",
-          "description": "Código do emitente retornado da tabela mgcad.emitente"
+          "example": "000001"
         },
         "desEmitente": {
           "type": "string",
-          "example": "EMPRESA MODELO LTDA",
-          "description": "Nome abreviado do emitente"
+          "example": "EMPRESA MODELO LTDA"
         }
       }
     }
