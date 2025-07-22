@@ -82,7 +82,7 @@
       "properties": {
         "codEmitente": {
           "type": "string",
-          "example": "000001"
+          "example": 1
         },
         "desEmitente": {
           "type": "string",
