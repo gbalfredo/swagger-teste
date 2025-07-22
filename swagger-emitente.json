@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Serviço Emitentes",
-    "description": "API REST para consulta do primeiro e último emitente com identificador 2 ou 3."
+    "description": "API REST para consulta do primeiro e ultimo emitente com identificador 2 ou 3."
   },
   "host": "fsw.consultoriaprime.com",
   "basePath": "/api/prm/v1",
@@ -18,9 +18,6 @@
   "paths": {
     "/prmapiAtivaFornec/getFirst": {
       "get": {
-        "tags": ["Emitente"],
-        "summary": "Retorna o primeiro emitente",
-        "description": "Retorna o primeiro emitente da tabela mgcad.emitente com identificador 2 ou 3.",
         "security": [
           {
             "basicAuth": []
@@ -28,22 +25,19 @@
         ],
         "responses": {
           "200": {
-            "description": "Requisição executada com sucesso.",
+            "description": "Requisicao executada com sucesso",
             "schema": {
-              "$ref": "#/definitions/LookupEmitenteResponse"
+              "$ref": "#/definitions/return"
             }
           },
-          "500": {
-            "description": "Erro interno ao executar a procedure."
+          "400": {
+            "description": "Erro interno"
           }
         }
       }
     },
     "/prmapiAtivaFornec/getLast": {
       "get": {
-        "tags": ["Emitente"],
-        "summary": "Retorna o último emitente",
-        "description": "Retorna o último emitente da tabela mgcad.emitente com identificador 2 ou 3.",
         "security": [
           {
             "basicAuth": []
@@ -51,20 +45,20 @@
         ],
         "responses": {
           "200": {
-            "description": "Requisição executada com sucesso.",
+            "description": "Requisicao executada com sucesso",
             "schema": {
-              "$ref": "#/definitions/LookupEmitenteResponse"
+              "$ref": "#/definitions/return"
             }
           },
-          "500": {
-            "description": "Erro interno ao executar a procedure."
+          "400": {
+            "description": "Erro interno"
           }
         }
       }
     }
   },
   "definitions": {
-    "LookupEmitenteResponse": {
+    "return": {
       "type": "object",
       "properties": {
         "method": {
@@ -87,8 +81,8 @@
       "type": "object",
       "properties": {
         "codEmitente": {
-          "type": "integer",
-          "example": 0
+          "type": "string",
+          "example": "000001"
         },
         "desEmitente": {
           "type": "string",
