@@ -2,57 +2,46 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Servi\u00e7o de Emitentes",
-    "description": "API REST para consulta do primeiro e \u00faltimo emitente com identificador 2 ou 3."
+    "title": "Serviço de Emitentes",
+    "description": "API REST desenvolvida em Progress 4GL para retornar o primeiro e o último emitente com identificador 2 ou 3."
   },
   "host": "fsw.consultoriaprime.com",
   "basePath": "/api/prm/v1/prmapiAtivaFornec",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
+  "produces": ["application/json"],
   "paths": {
     "/getFirst": {
       "get": {
-        "tags": [
-          "Emitente"
-        ],
-        "summary": "Retorna o primeiro emitente cadastrado",
-        "description": "Retorna o primeiro emitente com identificador 2 ou 3",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["Emitente"],
+        "summary": "Retorna o primeiro emitente com identificador 2 ou 3",
+        "description": "Executa a procedure pi-get-first e retorna os dados do primeiro emitente encontrado na tabela mgcad.emitente.",
         "responses": {
           "200": {
-            "description": "Requisi\u00e7\u00e3o executada com sucesso",
+            "description": "Requisição executada com sucesso",
             "schema": {
               "$ref": "#/definitions/LookupEmitenteResponse"
             }
           },
           "500": {
-            "description": "Erro interno"
+            "description": "Erro interno ao executar a procedure"
           }
         }
       }
     },
     "/getLast": {
       "get": {
-        "tags": [
-          "Emitente"
-        ],
-        "summary": "Retorna o \u00faltimo emitente cadastrado",
-        "description": "Retorna o \u00faltimo emitente com identificador 2 ou 3",
-        "produces": [
-          "application/json"
-        ],
+        "tags": ["Emitente"],
+        "summary": "Retorna o último emitente com identificador 2 ou 3",
+        "description": "Executa a procedure pi-get-last e retorna os dados do último emitente encontrado na tabela mgcad.emitente.",
         "responses": {
           "200": {
-            "description": "Requisi\u00e7\u00e3o executada com sucesso",
+            "description": "Requisição executada com sucesso",
             "schema": {
               "$ref": "#/definitions/LookupEmitenteResponse"
             }
           },
           "500": {
-            "description": "Erro interno"
+            "description": "Erro interno ao executar a procedure"
           }
         }
       }
@@ -83,11 +72,13 @@
       "properties": {
         "codEmitente": {
           "type": "string",
-          "example": "000001"
+          "example": "000001",
+          "description": "Código do emitente retornado da tabela mgcad.emitente"
         },
         "desEmitente": {
           "type": "string",
-          "example": "EMPRESA MODELO LTDA"
+          "example": "EMPRESA MODELO LTDA",
+          "description": "Nome abreviado do emitente"
         }
       }
     }
