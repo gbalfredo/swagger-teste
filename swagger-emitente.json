@@ -55,6 +55,36 @@
           }
         }
       }
+    },
+	"/prmapiAtivaFornec": {
+      "post": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/parametrosPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisição POST executada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/return"
+            }
+          },
+          "400": {
+            "description": "Erro no processamento"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -70,6 +100,24 @@
           "example": 200
         }        
       }
+    },
+	"parametrosPost": {
+      "type": "object",
+      "properties": {
+        "teste": {
+          "type": "string",
+          "example": "teste"
+        },
+        "nice": {
+          "type": "string",
+          "example": "nice"
+        },
+        "jon": {
+          "type": "string",
+          "example": "jon"
+        }
+      },
+      "required": ["teste", "nice", "jon"]
     }    
   }
 }
