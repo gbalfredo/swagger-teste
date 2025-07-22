@@ -68,27 +68,8 @@
         "status": {
           "type": "integer",
           "example": 200
-        },
-        "items": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/LookupEmitente"
-          }
-        }
+        }        
       }
-    },
-    "LookupEmitente": {
-      "type": "object",
-      "properties": {
-        "codEmitente": {
-          "type": "string",
-          "example": 1
-        },
-        "desEmitente": {
-          "type": "string",
-          "example": "EMPRESA MODELO LTDA"
-        }
-      }
-    }
+    }    
   }
 }
