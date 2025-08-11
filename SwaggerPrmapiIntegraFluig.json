@@ -1,0 +1,55 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Serviço Emitentes",
+    "description": "API REST para consulta do primeiro e ultimo emitente com identificador 2 ou 3."
+  },
+  "host": "fsw.consultoriaprime.com",
+  "basePath": "/api/prm/v1",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic"
+    }
+  },
+  "paths": {
+    "/prmapiIntegraFluig/cadEmit": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisicao executada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/return"
+            }
+          },
+          "400": {
+            "description": "Erro interno"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "return": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string",
+          "example": "GET"
+        },
+        "status": {
+          "type": "integer",
+          "example": 200
+        }        
+      }
+    }    
+  }
+}
