@@ -17,7 +17,7 @@
   },
   "paths": {
     "/prmapiIntegraFluig/cadEmit": {
-      "get": {
+      "post": {
         "security": [
           {
             "basicAuth": []
@@ -43,7 +43,7 @@
       "properties": {
         "method": {
           "type": "string",
-          "example": "GET"
+          "example": "POST"
         },
         "status": {
           "type": "integer",
