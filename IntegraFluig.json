@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Serviço Emitentes",
-    "description": "API REST para consulta do primeiro e ultimo emitente com identificador 2 ou 3."
+    "description": "API REST para integrar com Fluig."
   },
   "host": "fsw.consultoriaprime.com",
   "basePath": "/api/prm/v1",
@@ -16,11 +16,39 @@
     }
   },
   "paths": {
+    "/prmapiAtivaFornec": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Requisicao executada com sucesso",
+            "schema": {
+              "$ref": "#/definitions/return"
+            }
+          },
+          "400": {
+            "description": "Erro interno"
+          }
+        }
+      }
+    },
     "/prmapiIntegraFluig/cadEmit": {
       "post": {
         "security": [
           {
             "basicAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/EmitentePayload" }
           }
         ],
         "responses": {
@@ -50,6 +78,45 @@
           "example": 200
         }        
       }
-    }    
+    },
+    "EmitentePayload": {
+      "type": "object",
+      "required": [
+        "cod_emitente",
+        "nome_abrev",
+        "nome_emitente",
+        "nome_matriz",
+        "data_implantacao",
+        "tipo_movimento",
+        "grupo_cliente",
+        "inscricao_estadual",
+        "cnpj",
+        "limite_credito",
+        "endereco_logradouro",
+        "endereco_bairro",
+        "endereco_cidade",
+        "endereco_estado",
+        "endereco_cep",
+        "endereco_pais"
+      ],
+      "properties": {
+        "cod_emitente": { "type": "integer", "format": "int32", "example": 123 },
+        "nome_abrev": { "type": "string", "example": "ACME" },
+        "nome_emitente": { "type": "string", "example": "ACME Indústria LTDA" },
+        "nome_matriz": { "type": "string", "example": "ACME Matriz" },
+        "data_implantacao": { "type": "string", "format": "date", "example": "2025-06-14", "description": "YYYY-MM-DD" },
+        "tipo_movimento": { "type": "integer", "format": "int32", "example": 1, "description": "1-Cliente, 2-Fornecedor, 3-Ambos" },
+        "grupo_cliente": { "type": "integer", "format": "int32", "example": 10 },
+        "inscricao_estadual": { "type": "string", "example": "123.456.789.012" },
+        "cnpj": { "type": "string", "example": "12.345.678/0001-90" },
+        "limite_credito": { "type": "number", "example": 15000.50 },
+        "endereco_logradouro": { "type": "string", "example": "Rua das Flores, 100" },
+        "endereco_bairro": { "type": "string", "example": "Centro" },
+        "endereco_cidade": { "type": "string", "example": "Curitiba" },
+        "endereco_estado": { "type": "string", "example": "PR" },
+        "endereco_cep": { "type": "string", "example": "80000-000" },
+        "endereco_pais": { "type": "string", "example": "BR" }
+      }
+    }
   }
 }
