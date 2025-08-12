@@ -82,6 +82,10 @@
             "status":{
                "type":"integer",
                "example":200
+            },
+            "iCodEmitente":{
+               "type":"string",
+               "example":"13456"
             }
          }
       },
