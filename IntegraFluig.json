@@ -135,6 +135,10 @@
                "type":"string",
                "example":"10"
             },
+            "grupo_fornec":{
+               "type":"string",
+               "example":"10"
+            },
             "inscricao_estadual":{
                "type":"string",
                "example":"123456789012"
