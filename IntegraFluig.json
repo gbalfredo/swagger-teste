@@ -103,7 +103,8 @@
             "endereco_cidade",
             "endereco_estado",
             "endereco_cep",
-            "endereco_pais"
+            "endereco_pais",
+            "observacao"
          ],
          "properties":{
             "cod_emitente":{
@@ -165,6 +166,10 @@
             "endereco_pais":{
                "type":"string",
                "example":"BR"
+            },
+            "observacao":{
+               "type":"string",
+               "example":"Cadastrado via Fluig 123"
             }
          }
       }
